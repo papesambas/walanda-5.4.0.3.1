@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>
-			{% block title %}Welcome!
+		<title>Blog -
+			{% block title %}Acceuil
 			{% endblock %}
 		</title>
 		<link
@@ -19,6 +19,23 @@
 		{% endblock %}
 	</head>
 	<body>
+		{% include "_partials/_navBlog.html.twig" %}
+		<div class="container">
+			<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+				<a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none" href="{{path('app_blog')}}">
+					<span class="fs-4 ">Mon Blog</span>
+				</a>
+
+				<ul class="nav nav-pills align-items-center">
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						{# {% include "widget/cycles.html.twig" %} #}
+
+					{% endif %}
+
+				</ul>
+			</header>
+		</div>
 		{% block body %}{% endblock %}
+		{% include "_partials/_navFooter.html.twig" %}
 	</body>
 </html>
